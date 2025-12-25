@@ -137,8 +137,15 @@ Moreover; this subject is a up-to-date topic, so it seemed to me like a suitable
   
 -Mann–Whitney U Test and Kruskal–Wallis Test used to test the deviation hypothesis.
 
+**e. Machine Learning**
 
-### WILL BE UPDATED###
+-Multiple Linear Regression Model was used as a baseline.
+
+-KNN Regression was used to catch local patterns.
+
+-Decision Tree and Random Forest Regression was conducted to for non-linear decision rules.
+
+-Corss-Validation techniques were utilised for model comparison.
 
 
 ## 6. Hypothesis ##   
