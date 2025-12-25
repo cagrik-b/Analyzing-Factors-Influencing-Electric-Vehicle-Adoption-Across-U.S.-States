@@ -16,6 +16,9 @@
 4) [Data Sources and Information](#5-data-sources-and-information)
 5) [Methodology](#4-methodology)
 6) [Hypothesis](#6-hypothesis)
+7) [Reults](#7-results)
+8) [Important Findings](#8-important-findings)
+9) [Limitations and Future Work](#9-limitations-and-future-work)
 
 
 ## 1. Introduction ##
@@ -139,13 +142,13 @@ Moreover; this subject is a up-to-date topic, so it seemed to me like a suitable
 
 **e. Machine Learning**
 
--Multiple Linear Regression Model was used as a baseline.
+-Multiple Linear Regression was used as a baseline model for prediction.
 
 -KNN Regression was used to catch local patterns.
 
--Decision Tree and Random Forest Regression was conducted to for non-linear decision rules.
+-Decision Tree and Random Forest Regression was conducted for non-linear decision rules.
 
--Corss-Validation techniques were utilised for model comparison.
+-Corss-Validation techniques were utilised for model comparison and prediction evaluation.
 
 
 ## 6. Hypothesis ##   
@@ -161,6 +164,95 @@ Moreover; this subject is a up-to-date topic, so it seemed to me like a suitable
 *Null Hypothesis (H₀-deviation)*: No other measured factors, such as population density, educational attainment, or air quality, significantly explain the remaining variation in EV adoption rates after controlling for core economic (GDP per capita) and infrastructure (chargeing station availability) factors.
 
 *Alternative Hypothesis (H₁-deviation)*: Some states do differ from observed EV adoption levels, and this is largely explained by factors other than basic wealth and charger abundance. (For example, negative residuals (lower-than-expected adoption) may be linked to lower educational attainment, whereas positive residuals (higher-than-expected adoption) may be linked to higher population density or worse air quality.)
+
+
+## 7. Results ##
+
+### Exploratory Data Analysis (EDA)
+
+The exploratory analysis revealed substantial variation in electric vehicle (EV) adoption across U.S. states. EV registration counts are unevenly distributed, with a small number of states accounting for a large share of total registrations. Similar patterns were observed in key explanatory variables such as GDP, charging infrastructure, and educational attainment, indicating meaningful structural differences between states.
+
+Visualizations and summary statistics suggested clear upward trends between EV registrations and several variables, particularly GDP, number of charging stations, and education level. These patterns provided early evidence that economic capacity and infrastructure availability are strongly linked to EV adoption. In contrast, population density, household income, and air quality showed weaker and less consistent visual relationships with EV registrations.
+
+Overall, the EDA supported the project’s initial motivation by highlighting that EV adoption is not uniform across states and appears to be influenced by a combination of economic, infrastructural, and demographic factors.
+
+---
+
+### Hypothesis Testing
+
+The results consistently supported the alternative hypotheses.
+
+For the overall relationship hypothesis, all examined variables demonstrated statistically significant associations with EV registrations. This led to the rejection of the null hypothesis, confirming that state-level economic, infrastructural, demographic, and environmental characteristics are related to EV adoption rates.
+
+More importantly, the deviation-from-baseline hypothesis was also supported. While GDP and charging infrastructure emerged as the strongest predictors, educational attainment remained significant even after accounting for these core factors. This suggests that EV adoption is influenced not only by material conditions such as wealth and infrastructure, but also by broader social factors that may reflect awareness, attitudes, or readiness to adopt new technologies.
+
+Variables such as population density and air quality showed weaker effects, indicating that their influence on EV adoption is secondary compared to economic and infrastructure-related drivers.
+
+| Hypothesis | Variables Tested | Test(s) Used | Result | Decision |
+|-------------|------------------|--------------|---------|-----------|
+| **Overall Relationship (H₁)** | GDP, HI, EA Info, CS Count, Density, AQI | Spearman Correlation | All p < 0.05 | Reject H₀ (Significant) |
+| **Deviation from Baseline (H₂)** | EA Info, Density, AQI, CS Count | Mann–Whitney U, Kruskal–Wallis | Partial (Education, Chargers significant) | Partial Rejection of H₀-deviation |
+
+---
+
+### Machine Learning Results
+
+The machine learning analysis was conducted to evaluate whether the relationships identified in the earlier phases remain relevant when all variables are considered jointly in a predictive framework. Among the tested models, multiple linear regression achieved the best performance, explaining approximately 62% of the variation in EV registrations across states.
+
+The strong performance of the linear model reinforces the findings from both the exploratory analysis and hypothesis testing. It suggests that the key factors influencing EV adoption operate in a relatively systematic and additive manner at the state level. More complex models did not improve predictive accuracy, likely due to the small sample size and the aggregated nature of the data.
+
+Overall, the machine learning results serve as a validation step, confirming that the relationships identified earlier are not only statistically significant but also useful for prediction.
+
+| Model | R² | RMSE |
+|------|----|------|
+| Linear Regression | 0.624 | 199407.40 |
+| KNN Regression | 0.119| 305420.98 |
+| Decision Tree | 0.098| 309047.58 |
+| Random Forest | 0.187 | 293338.84 |
+
+
+## 8. Important Findings ##
+
+- **Economic capacity and charging infrastructure are the primary drivers of EV adoption.**  
+  States with higher GDP levels and more extensive charging networks consistently show higher EV registration rates across all stages of the analysis.
+
+- **Educational attainment plays a meaningful role beyond economic factors.**  
+  Even after accounting for wealth and infrastructure, education remains an important factor, supporting the project’s deviation-from-baseline hypothesis.
+
+- **Simpler models effectively capture EV adoption patterns.**  
+  The success of linear regression indicates that EV adoption responds in a largely proportional manner to changes in key structural variables.
+
+- **Demographic and environmental factors have weaker effects.**  
+  Population density and air quality are associated with EV adoption, but their influence is smaller compared to economic and infrastructure-related factors.
+
+- **Results are consistent across methods.**  
+  The alignment between EDA, hypothesis testing, and machine learning strengthens confidence in the conclusions and supports the overall validity of the project.
+
+Together, these findings suggest that differences in EV adoption across U.S. states reflect broader structural and social conditions rather than isolated or random effects, directly addressing the project’s core research question.
+
+
+## 9. Limitations and Future Work
+
+### Limitations
+
+This study is subject to several limitations that should be considered when interpreting the results. First, the analysis is based on state-level aggregated data, which may mask important within-state variation. Differences across cities or regions within the same state, such as urban–rural divides or local policy differences, are not captured in the current dataset.
+
+Second, the relatively small sample size, limited to the 50 U.S. states, constrains the complexity of statistical and machine learning models that can be reliably applied. While this makes simpler models more appropriate, it also limits the ability to explore more detailed interaction effects or non-linear relationships.
+
+Third, the study relies on a single cross-sectional snapshot of data. As a result, temporal dynamics—such as how changes in charging infrastructure or economic conditions affect EV adoption over time—cannot be examined. Additionally, some potentially relevant factors, such as state-level policy incentives, fuel prices, and consumer attitudes toward environmental issues, are not explicitly included due to data availability constraints.
+
+Finally, although machine learning models were used to assess predictive relationships, the results should not be interpreted as causal. The identified associations indicate patterns rather than direct cause-and-effect relationships.
+
+---
+
+### Future Work
+
+Future research could address these limitations in several ways. One natural way would be to add **time-series or panel data**, allowing for the analysis of trends in EV adoption and the impact of policy changes over time. This would provide stronger insights into the dynamics of EV adoption rather than static relationships.
+
+Another promising direction would be to conduct the analysis at a more granular geographic level, such as countries or metropolitan areas. This could help uncover localized patterns and better capture the influence of urbanization, infrastructure placement, and regional policy differences.
+
+Future studies could also expand the set of explanatory variables by including information on **government incentives**, **fuel prices**, **vehicle availability**, or **consumer attitudes toward sustainability**. Incorporating such variables may help explain deviations in EV adoption that are not fully captured by economic and infrastructural factors alone.
+
 
 
 
