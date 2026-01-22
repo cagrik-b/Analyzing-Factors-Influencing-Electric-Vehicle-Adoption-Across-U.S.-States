@@ -1,10 +1,8 @@
-# DSA210 Project
-
-### DSA 210: Analyzing Factors Influencing Electric Vehicle Adoption Across U.S. States ###
+### Analyzing Factors Influencing Electric Vehicle Adoption Across U.S. States ###
 ***Çağrı KARAKAŞ 33916***
 
 
-*I am Çağrı Karakaş. My student number is 33916. I am a Data Science and Analytics major at Sabancı University. This repository documents my DSA210 Term Project where I am going to investigate electric vehicle adoption rates and the reasons behind these rates by analyzing related US data.*
+*I am Çağrı Karakaş. My student number is 33916. I am a Data Science and Analytics major at Sabancı University. This repository documents my project where I am going to investigate electric vehicle adoption rates and the reasons behind these rates by analyzing related US data.*
 
 
 
